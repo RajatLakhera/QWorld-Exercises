@@ -1,0 +1,18 @@
+#As given in the hint for Task 3, you may pick your random numbers between 0 and  10𝑘 . For better precision, you may take bigger values of  𝑘 .
+#Write a function that randomly creates a probabilisitic state of size  𝑛  with a precision up to  𝑘  digits.
+#Test your function.
+
+from random import randrange
+
+state_size = randrange(10000001)
+total = 0
+probability = []
+prob_entries = []
+for i in range (state_size):
+    prob_entries.append(randrange(10000001))
+    total += prob_entries[i]
+
+for i in range (state_size):
+    probability.append(prob_entries[i]/total)
+    
+print(probability)
