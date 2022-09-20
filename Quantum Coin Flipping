@@ -1,0 +1,32 @@
+from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit, Aer, execute
+from qiskit.visualization import plot_histogram
+
+q = QuantumRegister(1)
+c = ClassicalRegister(1)
+qc = QuantumCircuit(q,c)
+
+qc.h(q[0])
+qc.measure(q,c)
+qc.draw(output = 'mpl')
+
+#This will give 50-50 chance of getting sate 0 and 1
+job = execute(qc, Aer.get_backend('qasm_simulator'), shots = 10000)
+counts = job.result().get_counts(qc)
+print(counts)
+plot_histogram(counts)
+
+
+#if however before measurement we applied another hadamard gate, then 
+#contrary to classical coin flipping we'll get 100 percent chance of 
+#encountering state zero(initial state) as measurement result
+
+qc.h(q[0])
+qc.h(q[0])
+qc.measure(q,c)
+qc.draw(output = 'mpl')
+
+#This will give 100 percent chance of getting sate 0
+job = execute(qc, Aer.get_backend('qasm_simulator'), shots = 10000)
+counts = job.result().get_counts(qc)
+print(counts)
+plot_histogram(counts)
