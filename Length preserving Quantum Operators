@@ -1,0 +1,56 @@
+from random import randrange
+import math
+import numpy as np
+
+#function to create a random quantum state
+from random import randrange
+import math
+import numpy as np
+
+def random_quantum_state(): 
+    quantum_state=[0,0]
+    quantum_state[0] = randrange(-100,101)
+    quantum_state[1] = randrange(-100,101)
+    
+    normalization_constant = math.sqrt(quantum_state[0]**2 + quantum_state[1]**2)
+    
+    quantum_state[0] = quantum_state[0]/normalization_constant
+    quantum_state[1] = quantum_state[1]/normalization_constant
+    return quantum_state
+    
+    
+
+#function to check validity of the randomly generated quantum state
+def state_validity_check(quantum_state):
+    #q_state = [0,0]
+    #q_state = random_quantum_state()
+    print("The original quantum state is: ",quantum_state)
+    if (math.sqrt(quantum_state[0]**2 + quantum_state[1]**2) <= 1 and math.sqrt(quantum_state[0]**2 + quantum_state[1]**2) > 0.97):
+        print("The state is allowed")
+    else:
+        print("The state is invalid")  
+
+
+#function to operate hadamard gate on quantum_state
+def hadamard(quantum_state):
+    hadamard_matrix = np.array([[0.707,0.707],[0.707,-0.707]])
+    #state_vector = state_validity_check()
+    #q_state = state_vector
+    
+    product = np.dot(hadamard_matrix,quantum_state)
+    
+    return product
+    
+    
+
+#putting it all together:
+picked_quantum_state = random_quantum_state()
+    state_validity_check(picked_quantum_state)
+    new_state = hadamard(picked_quantum_state)
+    
+    print("The new state after operating Hadamard gate is ", new_state)
+    
+ 
+ 
+
+
