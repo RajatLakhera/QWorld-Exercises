@@ -49,6 +49,10 @@ picked_quantum_state = random_quantum_state()
     new_state = hadamard(picked_quantum_state)
     
     print("The new state after operating Hadamard gate is ", new_state)
+    print()
+    
+    state_validity_check(new_state)
+
     
  
  
