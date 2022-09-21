@@ -1,2 +1,2 @@
-# QWorld-Exercises
-Repository of exercises that I found interesting
+# Quantum Computing Basics
+Repository of basic codes using Qiskit
