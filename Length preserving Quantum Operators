@@ -22,8 +22,6 @@ def random_quantum_state():
 
 #function to check validity of the randomly generated quantum state
 def state_validity_check(quantum_state):
-    #q_state = [0,0]
-    #q_state = random_quantum_state()
     print("The original quantum state is: ",quantum_state)
     if (math.sqrt(quantum_state[0]**2 + quantum_state[1]**2) <= 1 and math.sqrt(quantum_state[0]**2 + quantum_state[1]**2) > 0.97):
         print("The state is allowed")
@@ -34,8 +32,6 @@ def state_validity_check(quantum_state):
 #function to operate hadamard gate on quantum_state
 def hadamard(quantum_state):
     hadamard_matrix = np.array([[0.707,0.707],[0.707,-0.707]])
-    #state_vector = state_validity_check()
-    #q_state = state_vector
     
     product = np.dot(hadamard_matrix,quantum_state)
     
