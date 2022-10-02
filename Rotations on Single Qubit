@@ -1,7 +1,8 @@
 from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit, execute, Aer
 from math import pi
 
-#RECALLING CUSTOM FUNCTION TO DRAW 2D REPRESENTATION OF A QUBIT
+#RECALLING CUSTOM FUNCTION TO DRAW 2D REPRESENTATION OF A QUBIT USING DRAWING TOOLS OF PYTHON
+#This function draws a figure, the origin, the axes, the unit circle, and base quantum states.
 draw_qubit()
 
 theta = pi/4
@@ -19,4 +20,4 @@ for i in range(1,8):
     x_value = current_quantum_state[0].real
     y_value = current_quantum_state[1].real
     print("Iteration ", i, " is: ",x_value,"|0> + ", y_value,"|1>")
-    draw_quantum_state(x_value,y_value,"v0")
+    draw_quantum_state(x_value,y_value,"v0")        #Cusotm function that draws an arrow from (0,0) to (x,y) and associates it with name.
