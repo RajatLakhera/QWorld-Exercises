@@ -1,0 +1,22 @@
+from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit, execute, Aer
+from math import pi
+
+#RECALLING CUSTOM FUNCTION TO DRAW 2D REPRESENTATION OF A QUBIT
+draw_qubit()
+
+theta = pi/4
+
+q = QuantumRegister(1,'qreg')
+c = ClassicalRegister(1,'creg')
+qc = QuantumCircuit(q,c)
+
+[x,y]=[1,0]
+draw_quantum_state(x,y,"v0")
+for i in range(1,8): 
+    qc.ry(2*theta,q[0])
+    job = execute(qc,Aer.get_backend('statevector_simulator'),optimization_level=0)
+    current_quantum_state = job.result().get_statevector(qc,3).data
+    x_value = current_quantum_state[0].real
+    y_value = current_quantum_state[1].real
+    print("Iteration ", i, " is: ",x_value,"|0> + ", y_value,"|1>")
+    draw_quantum_state(x_value,y_value,"v0")
